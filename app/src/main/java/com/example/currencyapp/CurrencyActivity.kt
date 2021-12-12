@@ -23,14 +23,27 @@ class CurrencyActivity : AppCompatActivity() {
 
         bind.apply {
 
+            var a : Double = 0.0
 
-            btnConvert.setOnClickListener{
+            etCurrData.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(p0: Editable?) {
+                   // TODO("Not yet implemented")
+                }
+
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                   // TODO("Not yet implemented")
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+                    a = if(!p0.toString().isEmpty()) p0.toString().toDouble()
+                    else 0.0
 
 
-            var a = etCurrData.text.toString().toDouble()
+                    textView2.text = (a * Consts.RUB).toString()
+                }
+            })
 
-          textView2.text = (a * Consts.RUB).toString()
-            }
         }
     }
 }
